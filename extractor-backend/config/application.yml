@@ -1,0 +1,32 @@
+
+
+server:
+    port: ${EXTRACTOR_APP_PORT}
+
+spring:
+    autoconfigure:
+        exclude:
+            - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    profiles:
+        active: ${EXTRACTOR_SPRING_PROFILE}
+    config:
+        additional-location: ${SPRING_CONFIG_ADDITIONAL_LOCATION}
+
+    datasource:
+        url: jdbc:mysql://${EXTRACTOR_MYSQL_HOST}:${EXTRACTOR_DB_PORT}/${EXTRACTOR_MYSQL_DATABASE}?useSSL=true
+        username: ${EXTRACTOR_MYSQL_USER}
+        password: ${EXTRACTOR_MYSQL_PASSWORD}
+        driverClassName: com.mysql.cj.jdbc.Drive
+
+    rabbitmq:
+        host: ${RABBIT_MQ_HOST}
+        port: ${RABBIT_MQ_PORT}
+        username: ${RABBIT_MQ_DEFAULT_USER}
+        password: ${RABBIT_MQ_DEFAULT_PASS}
+
+    security:
+        oauth2:
+            resourceserver:
+                jwt:
+                    jwk-set-uri: http://${KEYCLOAK_HOST}:${KEYCLOAK_PORT}/realms/extractor-configurator-realm/protocol/openid-connect/certs
+                    issuer-uri: http://${KEYCLOAK_HOST}:${KEYCLOAK_PORT}/realms/extractor-configurator-realm

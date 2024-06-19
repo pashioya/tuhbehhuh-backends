@@ -1,0 +1,24 @@
+logging:
+  level:
+    be.kdg.integration5.extractor: ${IMPORTER_LOGGING_LEVEL}
+server:
+  port: ${DI_APP_PORT}
+
+spring:
+  profiles:
+    active: ${IMPORTER_SPRING_PROFILE}
+  config:
+    additional-location: ${SPRING_CONFIG_ADDITIONAL_LOCATION}
+
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST}
+    port: ${RABBIT_MQ_PORT}
+    username: ${RABBIT_MQ_DEFAULT_USER}
+    password: ${RABBIT_MQ_DEFAULT_PASS}
+
+  jms:
+    servicebus:
+      connection-string: ${AZURE_SERVICEBUS_CONN_STR}
+      pricing-tier: ${AZURE_SERVICEBUS_PRICING_TIER}
+    listener:
+      receive-timeout: 60000

@@ -1,0 +1,8 @@
+{
+    "apiUUID": "e56f8d8b-b085-4616-82b1-43a2faeafaf2",
+    "endpointPath": "v1/reports/traffic_snapshot_live",
+    "parameters": [],
+    "active": true,
+    "timeInterval": 10,
+    "timeUnit": "SECONDS"
+}

@@ -1,0 +1,22 @@
+  version: '3.8'
+  services:
+    configuration_db:
+      image: mysql:8.1.0
+      restart: no
+      environment:
+        MYSQL_DATABASE: "${EXTRACTOR_MYSQL_DATABASE}"
+        MYSQL_USER: "${EXTRACTOR_MYSQL_USER}"
+        MYSQL_PASSWORD: "${EXTRACTOR_MYSQL_PASSWORD}"
+        MYSQL_ROOT_PASSWORD: "${EXTRACTOR_MYSQL_ROOT_PASSWORD}"
+      ports:
+        - '${EXTRACTOR_DB_PORT}:3306'
+      networks:
+        - extractor-backend
+      volumes:
+        - "./mysql/configurator_data:/var/lib/mysql"
+
+  networks:
+    extractor-backend:
+      name: extractor-backend-network
+      driver: bridge
+
